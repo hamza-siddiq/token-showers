@@ -10,7 +10,7 @@ It looks and behaves like the one in the post: install it and the forecast shows
 
 [![Watch the demo: the band turns from Clear to Showers to Storm as Claude reads more files](assets/demo.jpg)](https://claude.dev/media/eccd73c962a5b22578cf5bfd4fa214f6ecd9e602a1cb8df519db737b99932f05.mp4)
 
-<sub>▶ Click to watch the demo (video from the claude.dev blog).</sub>
+<sub>▶ <a href="https://claude.dev/media/eccd73c962a5b22578cf5bfd4fa214f6ecd9e602a1cb8df519db737b99932f05.mp4">Watch the demo video</a>, or click the image above (from the claude.dev blog).</sub>
 
 ## Install
 
