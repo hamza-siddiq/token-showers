@@ -39,3 +39,13 @@ export const trend = (readings: readonly Reading[]): string | null => {
   if (delta === 0) return '  steady'
   return delta > 0 ? `  ▲ +${formatTokens(delta)} last turn` : `  ▼ ${formatTokens(-delta)} last turn`
 }
+
+/** `/token-weather` with its args: bare or "toggle" flips the switch; "status" reads it; null for anything else. */
+export const switchFor = (args: string, isOn: boolean): boolean | 'status' | null => {
+  const word = args.trim().toLowerCase()
+  if (word === '' || word === 'toggle') return !isOn
+  if (word === 'on') return true
+  if (word === 'off') return false
+  if (word === 'status') return 'status'
+  return null
+}

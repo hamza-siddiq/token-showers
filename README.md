@@ -21,7 +21,21 @@ Inside Claude Code:
 /plugin install token-weather@token-showers
 ```
 
-That's it. The band appears after your next turn.
+That's it. The band appears after your next turn, and in every session after that.
+
+## Turn it on and off
+
+`/token-weather` is a switch: type it bare to flip the band off or back on.
+
+| Command | Does |
+| --- | --- |
+| `/token-weather` | flips it: on → off, off → on |
+| `/token-weather on` / `off` | sets it |
+| `/token-weather status` | says which |
+
+It runs right away, even while Claude is mid-turn, and your choice is remembered: a session
+started with it off stays off until you turn it back on. Readings keep coming in while it's off,
+so the chart is whole when it comes back, and switching it on mid-session shows the band at once.
 
 ## The forecast
 
@@ -45,17 +59,18 @@ You can see the next `/compact` coming before it happens.
 ## How it works
 
 It's a small [Claude Code mod](https://claude.dev/blog/getting-started-with-claude-code-mods/): one `ui.render` hook draws the
-`AbovePrompt` band, and one reading per turn is kept in `$.state`.
+`AbovePrompt` band, and one reading per turn is kept in `$.state`. `session.start` registers the
+`/token-weather` command; the switch is kept in the mod's own `$.store`, so it survives between sessions.
 
 ```
 token-weather/
 ├── .claude-plugin/plugin.json
 ├── hooks/
 │   ├── hooks.json
-│   ├── register.tsx   # the band
-│   └── forecast.ts    # weather, token formatting, sparkline, trend
+│   ├── register.tsx   # the band and /token-weather
+│   └── forecast.ts    # weather, token formatting, sparkline, trend, the switch
 ├── tests/token-weather.test.ts
-└── types/index.d.ts   # the $.state contract
+└── types/index.d.ts   # the $.state contract (readings, the switch)
 ```
 
 ## Try it without installing
