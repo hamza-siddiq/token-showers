@@ -1,0 +1,8 @@
+{
+  "name": "token-showers",
+  "owner": { "name": "Hamza Siddiq" },
+  "plugins": [
+    { "name": "token-weather", "source": "./token-weather",
+      "description": "A live forecast of the context window, in the band above the prompt" }
+  ]
+}
